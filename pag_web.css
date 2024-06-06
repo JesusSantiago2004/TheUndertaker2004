@@ -45,6 +45,26 @@ header {
     margin-top: 5px;	
 }
 
+.seccion_fondito
+{
+    background-image: url(https://www.wwe.com/f/styles/shows_header_xl/public/all/2024/05/20240524_Superstars_Header--2426e773425d09b60cd01fa302958266.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: #FFF;
+    text-align: center;
+    padding: 80px;
+}
+
+.seccion_fondito h1
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
 nav {
     background-color: rgb(114, 0, 0);
     color: #FFF;
