@@ -1,22 +1,35 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const next = document.getElementById("next");
-    const prev = document.getElementById("prev");
-    const items = document.querySelectorAll(".slider .list .item");
-    const thumbnails = document.querySelectorAll(".thumbnail .item");
-    let currentIndex = 0;
+// Obtener el modal
+var modal = document.getElementById("myModal");
 
-    function showSlide(index) {
-        items[currentIndex].classList.remove("active");
-        thumbnails[currentIndex].classList.remove("active");
-        currentIndex = (index + items.length) % items.length;
-        items[currentIndex].classList.add("active");
-        thumbnails[currentIndex].classList.add("active");
-    }
+// Obtener todas las imágenes de los luchadores
+var images = document.querySelectorAll(".gallery-SUPERSTARS-item img");
 
-    next.addEventListener("click", () => showSlide(currentIndex + 1));
-    prev.addEventListener("click", () => showSlide(currentIndex - 1));
+// Obtener el elemento <span> que cierra el modal
+var span = document.getElementsByClassName("close")[0];
 
-    thumbnails.forEach((thumbnail, index) => {
-        thumbnail.addEventListener("click", () => showSlide(index));
+// Cuando el usuario haga clic en una imagen de luchador, abrir el modal
+images.forEach(function(image) {
+    image.addEventListener("click", function() {
+        modal.style.display = "block";
+        var imgSrc = this.getAttribute("src");
+        var wrestlerName = this.nextElementSibling.textContent;
+        var championship = this.parentElement.getAttribute("data-championship");
+        var championshipImg = this.parentElement.getAttribute("data-championship-img");
+        document.getElementById("modalImg").src = imgSrc;
+        document.getElementById("modalTitle").textContent = wrestlerName;
+        document.getElementById("modalChampionship").textContent = "Campeonato: " + championship;
+        document.getElementById("modalChampionshipImg").src = championshipImg;
     });
 });
+
+// Cuando el usuario haga clic en <span> (x), cerrar el modal
+span.onclick = function() {
+    modal.style.display = "none";
+};
+
+// Cuando el usuario haga clic fuera del modal, también cerrarlo
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
